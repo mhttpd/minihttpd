@@ -1,0 +1,3 @@
+[submodule "lib/minihttpd"]
+	path = lib/minihttpd
+	url = http://github.com/mhttpd/core
