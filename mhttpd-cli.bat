@@ -18,7 +18,7 @@ pushd %MHTTPD_ROOT%
 
 :: Kill any FCGI processes
 echo Killing all FastCGI processes ...
-taskkill /F /T /IM php-cgi.exe
+taskkill /F /T /IM php-fcgi.exe
 
 :: Return to the starting directory
 popd
