@@ -1,3 +1,18 @@
+===================================================
+  << MiniHTTPD PHP Webserver >> Version History
+===================================================
+
+Version 0.3 - 2011/03/06
+
+- Added request handler methods to main client class
+- Improved file info parsing and discovery methods
+- Added XCache admin pages to Extras private directory
+- Enabled XCache as default for FCGI (see bin\php\php.d\xcache.ini)
+- Enabled scanning of php.d directory for extra FCGI ini files
+- Renamed php-cgi to php-fcgi (replace bin\php files)
+- Added checking of trailing slashes on URLs for directory requests
+- Added access to Extras directory in private server docroot
+- Improved header parsing method for messages
 
 Version 0.2 - 2010/08/01
 
@@ -5,7 +20,6 @@ Version 0.2 - 2010/08/01
 - Fixed request rewriteUrlPath() method
 - Fixed template DOCTYPE values
 - Updated request accepts() method
-
 
 Version 0.1 - 2010/07/30
 

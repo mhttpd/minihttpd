@@ -7,12 +7,13 @@ desktop applications via a browser-based user interface.
 
 Some of the main features include: 
 
-- Simple installation, easy to configure and use OOB 
-- Console or windowed (background) mode 
-- Support for serving both static and dynamic content 
-- FastCGI process pool for executing PHP scripts 
-- Handling of multiple client connections 
-- Support for SSL connections 
+- Simple installation, easy to configure and use OOB
+- Console or windowed (background) mode
+- Support for serving both static and dynamic content
+- FastCGI process pool for executing PHP scripts
+- Handling of multiple client connections
+- Modular request handler system, easily extended
+- Support for SSL connections
 - Extensible source scripts 
 
 ## Installation 
