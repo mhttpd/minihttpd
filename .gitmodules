@@ -1,3 +1,3 @@
 [submodule "lib/minihttpd"]
 	path = lib/minihttpd
-	url = git://github.com/mhttpd/core2.git
+	url = git://github.com/mhttpd/core.git
