@@ -49,7 +49,7 @@ running the server in console mode. It includes the full list of PHP
 settings from the 5.3.3 release, and loads the required extensions for the 
 server. 
 
-- **\bin\php\php-cgi.ini**: this contains the PHP configuration for the 
+- **\bin\php\php-fcgi.ini**: this contains the PHP configuration for the 
 FastCGI processes. It should be edited to support whatever PHP scripts are 
 to be served - particularly to load any extensions required by user scripts. 
 

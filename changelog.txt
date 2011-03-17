@@ -2,6 +2,18 @@
   << MiniHTTPD PHP Webserver >> Version History
 ===================================================
 
+Version 0.4 - 2011/03/17
+
+- Improved memory usage and concurrency
+- Added support for chunked transport-encoding
+- Added X-SendFile request support for FCGI
+- Improved header search and editing methods
+- Fixed case-sensitivity of access authorization requests
+- Fixed loading of user_classes.php file
+- Added request handler for simple URL rewriting
+- Added per-request access authorization options
+- Re-implemented request handlers as objects
+
 Version 0.3 - 2011/03/06
 
 - Added request handler methods to main client class
