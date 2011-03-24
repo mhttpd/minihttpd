@@ -1,6 +1,19 @@
-===================================================
-  << MiniHTTPD PHP Webserver >> Version History
-===================================================
+===================================================================
+         << MiniHTTPD PHP Webserver >> Version History
+===================================================================
+
+Version 0.5 - 2011/03/23
+
+- Fixed POST request issues
+- Added verification of responses before sending
+- Added 'strict' option to rewrite handler
+- Improved handling of FCGI failures
+- Fixed auth response issues
+- Added basic server traffic stats
+- Fixed buffering of chunked responses
+- Added culling of idle FCGI processes
+- Improved X-SendFile support
+- Fixed various case-sensitivity issues
 
 Version 0.4 - 2011/03/17
 
