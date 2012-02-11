@@ -33,7 +33,7 @@ directory, where they can be edited or extended as required.
 There are a few configuration files that need to be read carefully and 
 edited: 
 
-- **\lib\minihttpd\default.ini**: this is the default server configuration 
+- **\lib\minihttpd\config\default.ini**: this is the default server configuration 
 file that is used if no ini file is found in the root folder. Copy this to 
 the root folder, rename it (to anything) and make your changes. The options 
 are quite simple, and should be well enough documented to be easily 
@@ -135,7 +135,7 @@ main ini file for the authorizaton settings).
 Otherwise, the source code is relatively compact and hopefully transparent, 
 so it shouldn't take too long to master the details ;). Functionality of the 
 core classes can be extended quite easily by following the instructions in 
-the notes for \lib\minihttpd\classes.php. 
+the notes for \lib\minihttpd\config\classes.php. 
 
-*Copyright (c) 2010 MiniHTTPD Team* 
+*Copyright (c) 2010-2012 MiniHTTPD Team* 
 
