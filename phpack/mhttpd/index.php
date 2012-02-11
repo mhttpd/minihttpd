@@ -23,13 +23,13 @@ unset($GLOBALS['payload']);
 unset($GLOBALS['PHPARCHIVE_TEMP_VAR']);
 
 // Clean up the include paths
-set_include_path(preg_replace('|pa://.*?;|', '', get_include_path()));
+// set_include_path(preg_replace('|pa://.*?;|', '', get_include_path()));
 
 // Add local include paths
-set_include_path(get_include_path()
-	.PATH_SEPARATOR.$path.'lib'
-	.PATH_SEPARATOR.$path.'lib\pear\classes'
-);
+// set_include_path(get_include_path()
+	// .PATH_SEPARATOR.$path.'lib'
+	// .PATH_SEPARATOR.$path.'lib\pear\classes'
+// );
 
 // Change the working directory
 chdir($path.'lib\minihttpd');
