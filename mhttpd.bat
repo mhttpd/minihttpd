@@ -7,7 +7,7 @@ if %ERRORLEVEL%==0 (
 	goto :end
 )
 
-:: Set the working directory to this file's
+:: Set the MHTTPD root directory to this file's
 set MHTTPD_ROOT=%~dp0
 
 :: Change to the php directory

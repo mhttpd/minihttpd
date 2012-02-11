@@ -1,4 +1,9 @@
 @ECHO OFF
 
-:: Kill the running server process (non-cli) and any spawned FastCGI processes
-taskkill /F /T /IM mhttpd.exe
+:: Kill the running server process (non-cli)
+echo Stopping the server ...
+taskkill /F /IM mhttpd.exe
+
+:: Kill any spawned FastCGI processes
+echo Killing all FastCGI processes ...
+taskkill /F /IM php-fcgi.exe

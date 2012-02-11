@@ -14,11 +14,11 @@ set MHTTPD_ROOT=%~dp0
 pushd %MHTTPD_ROOT%
 
 :: Start the server (using full paths)
-"%MHTTPD_ROOT%bin\php\mhttpd-cli.exe" -f "%MHTTPD_ROOT%lib\minihttpd\launch.php" -c "%MHTTPD_ROOT%bin\php\mhttpd-cli.ini"
+"%MHTTPD_ROOT%bin\php\mhttpd-cli.exe" -f "%MHTTPD_ROOT%lib\minihttpd\launch.php" -c "%MHTTPD_ROOT%bin\php\mhttpd-cli.ini" -- %*
 
 :: Kill any FCGI processes
 echo Killing all FastCGI processes ...
-taskkill /F /T /IM php-fcgi.exe
+taskkill /F /IM php-fcgi.exe
 
 :: Return to the starting directory
 popd
