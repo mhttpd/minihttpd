@@ -23,12 +23,9 @@ no external dependencies, and there is no installer. Just download the zip
 file and extract it to a folder of your choice - somewhere outside of any 
 UAC control - and run the server from there. The binaries are included in 
 the \bin\php directory (NB: if you're pulling from the repository, you'll 
-need to add these manually from the zip). These are the standard PHP 5.3.3 
-builds apart from mhttpd.exe, which is a stub created using phpack for 
-running the server in windowed mode (php-win.exe doesn't work quite as 
-expected here). Apart from the short script that's packed in this stub, all 
-of the scripts that run the server are included in the \lib\minihttpd 
-directory, where they can be edited or extended as required. 
+need to add these manually from the zip). These are the standard PHP 5.4.3 
+for Windows builds. All of the scripts that run the server are included in the
+\lib\minihttpd directory, where they can be edited or extended as required. 
 
 There are a few configuration files that need to be read carefully and 
 edited: 
@@ -37,17 +34,15 @@ edited:
 file that is used if no ini file is found in the root folder. Copy this to 
 the root folder, rename it (to anything) and make your changes. The options 
 are quite simple, and should be well enough documented to be easily 
-understood ;). 
+understood ;). The path to this file can also be set via the MHTTPD_INIPATH 
+environment variable.
 
-- **\bin\php\config.ini**: this is the PHP configuration file for running 
-the server in windowed mode (i.e. for the mhttpd.exe stub). It can't be 
-renamed, and includes only the most basic PHP settings needed to run the 
-server (e.g. loading the required extensions). 
+- **\bin\php\mhttpd.ini**: this is the PHP configuration file for running 
+the server in windowed mode. It includes the full list of PHP settings from the
+5.4.3 release, and loads the required extensions for the server.
 
 - **\bin\php\mhttpd-cli.ini**: this is the PHP configuration file for 
-running the server in console mode. It includes the full list of PHP 
-settings from the 5.3.3 release, and loads the required extensions for the 
-server. 
+running the server in console mode.
 
 - **\bin\php\php-fcgi.ini**: this contains the PHP configuration for the 
 FastCGI processes. It should be edited to support whatever PHP scripts are 
@@ -68,10 +63,8 @@ i.e. a virtual server setup, and only one instance of the server can be run
 at a time. 
 
 **IMPORTANT: Exposing the server to external connections has security 
-implications and you do so at your own risk with this experimental 
-application that has not been fully security-tested. Firewall the server 
-port by default unless you really know what you're doing and understand the 
-risks.** 
+implications and you do so at your own risk. Although SSL support is available,
+the server is best run on the local network only.**
 
 ## How it works 
 
@@ -118,9 +111,8 @@ client.
 4. The client connection to the server is closed and the slot is now free to 
 accept a new connection. 
 
-This isn't a completely asynchronous solution, and any large file downloads 
-may still present a problem, but in everyday usage it allows for decent 
-concurrency and the ability, for example, to make optimal use of Keep-Alive 
+This isn't a completely asynchronous solution, but in everyday usage it allows
+for decent concurrency and the ability, for example, to make optimal use of Keep-Alive 
 connections without choking the server. This is more than adequate for 
 running a browser-based UI locally, or for handling a reasonable number of 
 simultaneous external requests. 
@@ -138,4 +130,3 @@ core classes can be extended quite easily by following the instructions in
 the notes for \lib\minihttpd\config\classes.php. 
 
 *Copyright (c) 2010-2012 MiniHTTPD Team* 
-
