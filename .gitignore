@@ -4,3 +4,6 @@ Thumbs.db
 
 #ignore error logs
 errors.txt
+
+#ignore build dir
+_build/*

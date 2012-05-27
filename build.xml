@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="MiniHTTPD" default="versions">
+
+	<!-- Current MiniHTTPD version -->
+	<property name="mhttpd.version" value="0.7" />
+
+	<!-- Main project paths -->	
+	<property name="startdir" value="${application.startdir}" />
+	<property name="basedir"	value="${project.basedir}" />
+	<property name="builddir" value="${basedir}\_build" />
+
+	<!-- Check versions -->
+	<target name="versions">
+		<echo msg="MHTTPD : ${mhttpd.version}" />
+		<echo msg="Phing  : ${phing.version}" />
+		<echo msg="PHP    : ${php.version}" />
+	</target>
+	
+	<!-- Prepare the build dir -->
+	<target name="prepare">
+		<echo msg="Build directory: ${builddir}" />
+		<mkdir dir="${builddir}" />		
+	</target>
+
+		<!-- Clean up build files -->
+	<target name="clean">
+		<delete includeemptydirs="true" failonerror="true">
+			<fileset dir="${builddir}">
+				<exclude name="*.zip" />
+			</fileset>
+		</delete>
+	</target>
+
+	<!-- Copy source files to the build dir -->
+	<target name="copy-src" depends="prepare">
+		<copy todir="${builddir}\temp" haltonerror="true">
+			<fileset dir="${basedir}">
+				<exclude name=".git**" />
+				<exclude name="_build\**" />
+				<exclude name="build.xml" />
+				<exclude name="tmp\**" />
+				<exclude name="logs\**" />
+				<exclude name="bin\**" />
+				<exclude name="phpack\**" />
+				<exclude name="**\_src\**" />
+				<exclude name="**\_old\**" />
+			</fileset>
+		</copy>
+		<mkdir dir="${builddir}\temp\logs" />
+		<mkdir dir="${builddir}\temp\tmp" />
+		<mkdir dir="${builddir}\temp\bin" />		
+	</target>
+
+	<!-- Copy binaries to the build dir -->
+	<target name="copy-bins" depends="prepare">
+		<copy todir="${builddir}\temp\bin\php" haltonerror="true">
+			<fileset dir="${basedir}\bin\php">
+				<include name="php**" />
+				<include name="**/*.dll" />
+				<include name="ssl\*" />
+				<include name="mhttpd*" />
+				<include name="*.txt" />
+				<include name="config.ini" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- Build a .zip for source files only -->
+	<target name="zip-src" depends="copy-src">
+		<property name="release.name" value="mhttpd-src-v${mhttpd.version}.zip" />
+		<delete file="${builddir}/${release.name}" failonerror="true" />
+		<zip basedir="${builddir}/temp" destfile="${builddir}/${release.name}" includeemptydirs="true" />
+		<phingcall target="clean" />
+	</target>
+	
+	<!-- Build a .zip for binaries only -->
+	<target name="zip-bins" depends="copy-bins">
+		<property name="release.name" value="mhttpd-bins-${php.version}.zip" />
+		<delete file="${builddir}/${release.name}" failonerror="true" />
+		<zip basedir="${builddir}/temp" destfile="${builddir}/${release.name}" includeemptydirs="true" />
+		<phingcall target="clean" />
+	</target>
+	
+	<!-- Build a full release .zip -->
+	<target name="dist">
+		<property name="release.name" value="mhttpd-v${mhttpd.version}-${php.version}.zip" />
+		<delete file="${builddir}/${release.name}" failonerror="true" />
+		<phingcall target="copy-src" />
+		<phingcall target="copy-bins" />
+		<zip basedir="${builddir}/temp" destfile="${builddir}/${release.name}" includeemptydirs="true" />
+		<phingcall target="clean" />
+	</target>
+	
+</project>
