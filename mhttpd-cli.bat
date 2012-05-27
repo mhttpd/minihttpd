@@ -1,4 +1,5 @@
 @ECHO OFF
+@setlocal
 
 :: Check running processes
 tasklist | find "mhttpd.exe" > nul
@@ -24,3 +25,4 @@ taskkill /F /IM php-fcgi.exe
 popd
 
 :end
+@endlocal

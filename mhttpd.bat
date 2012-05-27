@@ -1,4 +1,5 @@
 @ECHO OFF
+@setlocal
 
 :: Check running processes
 tasklist | find "mhttpd.exe" > nul
@@ -16,7 +17,7 @@ pushd "%MHTTPD_ROOT%bin\php"
 echo Starting MiniHTTPD Server in the background ... 
 
 :: Start the server
-start /B mhttpd.exe
+start /B mhttpd.exe -f "%MHTTPD_ROOT%lib\minihttpd\launch.php" -c "mhttpd.ini"
 
 :: Return to the working directory
 popd
@@ -25,3 +26,4 @@ echo -- done, use mkill.bat to shut down the server
 echo Please wait for the browser to launch ...
 
 :end
+@endlocal
